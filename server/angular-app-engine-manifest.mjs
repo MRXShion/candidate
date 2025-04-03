@@ -1,6 +1,6 @@
 
 export default {
-  basePath: 'https://github.com/MRXShion/candidate',
+  basePath: 'https://mrxshion.github.io/candidate',
   supportedLocales: {
   "en-US": ""
 },
