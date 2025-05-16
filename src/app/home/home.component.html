@@ -1,4 +1,81 @@
-<div class="home-container">
-    <h2>Welcome!</h2>
-    <button (click)="onLogout()">Logout</button>
+<div class="search-container">
+  <div class ="data-table-container">
+  <div class="search-header">
+    <input type="text" placeholder="Search..." class="search-input" [(ngModel)]="searchText" (input)="onSearch()" />
+    <button class="search-filter" (click)="toggleFilterPopup()" aria-label="Filter">
+      <i class="fa fa-filter"></i>
+    </button>
+    <button class="logout-button" (click)="onLogout()">Log Out</button>
   </div>
+
+  <div *ngIf="isFilterPopupVisible" class="filter-popup-overlay"></div>
+
+  <div [ngClass]="{'filter-popup': true, 'show': isFilterPopupVisible}">
+    <div class="popup-content">
+
+      <form [formGroup]="tempFilterForm">
+        <div class="filter-option">
+          <label>Gender</label>
+          <select formControlName="gender">
+            <option value="">Select Gender</option>
+            <option value="m">Male</option>
+            <option value="f">Female</option>
+          </select>
+        </div>
+
+        <div class="filter-option">
+          <label>Job Position</label>
+          <select formControlName="position">
+            <option value="">Select Position</option>
+            <option value="developer">Developer</option>
+            <option value="designer">Designer</option>
+          </select>
+        </div>
+
+          <div class="button-group">
+            <button type="button" (click)="applyFilter()">Apply Filter</button>
+            <button type="button" (click)="clearFilter()">Clear Filter</button>
+            <button type="button" (click)="toggleFilterPopup()">Close</button>
+          </div>
+      </form>
+    </div>
+  </div>
+
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th style="text-align: center;">No.</th>
+        <th style="text-align: center;" (click)="sortData('name')">Name<i [ngClass]="{
+          'fa fa-sort-up': sortColumn === 'name' && sortDirection === 'asc',
+          'fa fa-sort-down': sortColumn === 'name' && sortDirection === 'desc'
+        }"></i></th>
+        <th style="text-align: center;" (click)="sortData('gender')">Gender<i [ngClass]="{
+          'fa fa-sort-up': sortColumn === 'gender' && sortDirection === 'asc',
+          'fa fa-sort-down': sortColumn === 'gender' && sortDirection === 'desc'
+        }"></i></th>
+        <th style="text-align: left;" (click)="sortData('position')">Position<i [ngClass]="{
+          'fa fa-sort-up': sortColumn === 'position' && sortDirection === 'asc',
+          'fa fa-sort-down': sortColumn === 'position' && sortDirection === 'desc'
+        }"></i></th>
+        <th style="text-align: center;" (click)="sortData('date')">Date<i [ngClass]="{
+          'fa fa-sort-up': sortColumn === 'date' && sortDirection === 'asc',
+          'fa fa-sort-down': sortColumn === 'date' && sortDirection === 'desc'
+        }"></i></th>
+        <th style="text-align: center;">Details</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let person of filteredData; let rowindex = index">
+        <td style="text-align: center;">{{ rowindex + 1 }}</td>
+        <td style="width: auto; text-align: left; white-space: nowrap;">{{ person.name }}</td>
+        <td style="text-align: center; white-space: nowrap;">{{ person.gender }}</td>
+        <td style="text-align: left; white-space: nowrap;">{{ person.position }}</td>
+        <td style="text-align: center; white-space: nowrap;">{{ person.date | date: 'dd/MM/yyyy' }}</td>
+        <td style="text-align: center;"><button (click)="viewDetails(person)">
+          <i class="fa fa-search"></i>
+        </button></td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+</div>

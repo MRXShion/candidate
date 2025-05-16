@@ -1,0 +1,73 @@
+.card {
+    max-width: 768px;
+    margin: 2.5rem auto;
+    padding: 1.5rem;
+    background-color: white;
+    border-radius: 1rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1d4ed8;
+    margin-bottom: 1.5rem;
+  }
+  
+  .info-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  @media (min-width: 640px) {
+    .info-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  
+  .info-box {
+    padding: 1rem;
+    background-color: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.5rem;
+  }
+  
+  .info-box label {
+    font-size: 0.875rem;
+    color: #6b7280;
+    display: block;
+    margin-bottom: 0.25rem;
+  }
+  
+  .info-box div {
+    color: #1f2937;
+  }
+  
+  .card-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 24px;
+  }
+  
+  .back-button,
+  .nav-buttons button {
+    background-color: #4f8ef7;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  
+  .back-button:hover,
+  .nav-buttons button:hover {
+    background-color: #3b75e6;
+  }
+  
+  .nav-buttons {
+    display: flex;
+    gap: 8px;
+  }

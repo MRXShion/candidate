@@ -1,1 +1,60 @@
-<p>person-detail works!</p>
+<div class="card" *ngIf="person">
+  <h2 class="card-title">ข้อมูลส่วนตัว</h2>
+  <div class="info-grid">
+    <div class="info-box">
+      <label>ชื่อ</label>
+      <div>{{ person.thaiName || '-' }}</div>
+    </div>
+    <div class="info-box">
+      <label>ชื่อภาษาอังกฤษ</label>
+      <div>{{ person.name || '-' }}</div>
+    </div>
+    <div class="info-box">
+      <label>ตำแหน่ง</label>
+      <div>{{ person.position || '-' }}</div>
+    </div>
+    <div class="info-box">
+      <label>อีเมล</label>
+      <div>{{ person.email || '-' }}</div>
+    </div>
+    <div class="info-box">
+      <label>เบอร์โทร</label>
+      <div>{{ person.phone || '-' }}</div>
+    </div>
+    <div class="info-box">
+      <label>ที่อยู่</label>
+      <div>{{ person.address || '-' }}</div>
+    </div>
+    <div class="info-box">
+      <label>วุฒิการศึกษา</label>
+      <div>{{ person.education || '-' }}</div>
+    </div>
+    <div class="info-box">
+      <label>ประสบการณ์การทำงาน</label>
+      <div>{{ person.experience || '-' }}</div>
+    </div>
+    <div class="info-box">
+      <label>ทักษะ</label>
+      <div>{{ person.skills || '-' }}</div>
+    </div>
+    <div class="info-box">
+      <label>เงินเดือนที่ต้องการ</label>
+      <div>{{ person.salary || '-' }}</div>
+    </div>
+    <div class="info-box">
+      <label>วันที่เริ่มงานได้ไวที่สุด</label>
+      <div>{{ person.date ? (person.date | date: 'dd/MM/yyyy') : '-' }}</div>
+    </div>
+    <div class="info-box">
+      <label>ผลงาน</label>
+      <div>{{ person.portfolio || '-' }}</div>
+    </div>
+  </div>
+  <div class="card-actions">
+    <button class="back-button" (click)="goBack()">Back</button>
+    <div class="nav-buttons">
+      <button *ngIf="showPreviousButton" (click)="goPrevious()">Previous</button>
+      <button *ngIf="showNextButton" (click)="goNext()">Next</button>
+    </div>
+  </div>
+</div>
