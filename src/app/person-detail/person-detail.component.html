@@ -39,7 +39,7 @@
     </div>
     <div class="info-box">
       <label>เงินเดือนที่ต้องการ</label>
-      <div>{{ person.salary || '-' }}</div>
+      <div>{{ person.salary ? (person.salary | number:'1.0-0') : '-' }}</div>
     </div>
     <div class="info-box">
       <label>วันที่เริ่มงานได้ไวที่สุด</label>

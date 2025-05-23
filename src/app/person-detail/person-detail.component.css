@@ -35,13 +35,12 @@
   
   .info-box label {
     font-size: 0.875rem;
-    color: #6b7280;
     display: block;
     margin-bottom: 0.25rem;
   }
   
   .info-box div {
-    color: #1f2937;
+    color: #6b7280;
   }
   
   .card-actions {
